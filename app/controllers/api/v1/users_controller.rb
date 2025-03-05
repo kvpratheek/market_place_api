@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-  before_action(:set_user, only: [ :update ] )
+  before_action(:set_user, only: [ :update, :destroy ] )
+
+  before_action :check_owner, only: %i[update destroy]
 
   def show
     render(json: User.find(params[:id]).to_json(except: [:password_digest]))
@@ -18,6 +20,11 @@ class Api::V1::UsersController < ApplicationController
     puts "Update called"
   end
 
+  def destroy
+    puts "Destroy called"
+  end
+
+  private
   def user_params
     puts "User parameter #{params}"
     params.require(:user).permit(:email, :password)
@@ -25,5 +32,9 @@ class Api::V1::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def check_owner
+    head :forbidden unless @user.id == get_current_user&.id
   end
 end
