@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
   before_action(:set_user, only: [ :update ] )
 
   def show
-    render(json: User.find(params[:id]))
+    render(json: User.find(params[:id]).to_json(except: [:password_digest]))
   end
 
   def create

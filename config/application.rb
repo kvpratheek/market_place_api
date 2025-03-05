@@ -28,5 +28,7 @@ module MarketPlaceApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    puts Rails.application.credentials.secret_key_base
   end
 end
