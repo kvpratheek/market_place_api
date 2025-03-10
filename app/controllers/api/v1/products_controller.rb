@@ -2,9 +2,8 @@ class Api::V1::ProductsController < ApplicationController
   before_action(:check_login, only: %i[ show index create])
   before_action :set_product, only: %i[show ]
   def index
-    # render(json: Product.all)
-    render json: Product.all.map { |prod| ProductSerializer.new(prod).serializable_hash }.to_json
-    # render json: ProductSerializer.new(Product.all).serializable_hash.to_json
+
+    render json: Product.search(params).map { |prod| ProductSerializer.new(prod).serializable_hash }.to_json
   end
 
   def show
