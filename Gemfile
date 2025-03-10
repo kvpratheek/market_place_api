@@ -53,3 +53,5 @@ gem "bcrypt", "~> 3.1"
 gem "jwt", "~> 2.10"
 
 gem "faker", "~> 2.19"
+
+gem "active_model_serializers", "~> 0.10.15"
