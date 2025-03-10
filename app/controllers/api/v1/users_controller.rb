@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action(:set_user, only: [ :update, :destroy ] )
+  before_action(:set_user, only: [ :update, :destroy ])
 
   before_action :check_owner, only: %i[update destroy]
 

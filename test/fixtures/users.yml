@@ -2,5 +2,5 @@
 
 one:
   email: kvpratheek@gmail.com 
-  password_digest: MyPassword
+  password_digest: $2a$12$aSgP7Q/FOn8ZVz79Ml0nLOFhptK5NE8MHIZsoqRThAy.LfsgD4P1W
 
